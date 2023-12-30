@@ -33,10 +33,24 @@ app.get("/subscribe", (req, res) => {
 
   // send client a simple response
   res.write("you are subscribed\n\n");
-  watch(path.join(__dirname, "./drafts"), () => {
-    console.log("[update]");
-    response.write("data: refresh\n\n");
-  });
+  watch(
+    path.join(__dirname, "../"),
+    {
+      recursive: true,
+      filter(f, skip) {
+        // skip node_modules
+        if (/\/node_modules/.test(f)) return skip;
+        // skip .git folder
+        if (/\.git/.test(f)) return skip;
+        // only watch for js files
+        return /\.md$/.test(f);
+      },
+    },
+    () => {
+      console.log("[update]");
+      response.write("data: refresh\n\n");
+    }
+  );
   // listen for client 'close' requests
   req.on("close", () => {
     response = res;

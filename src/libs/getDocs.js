@@ -28,6 +28,6 @@ export async function getDocs() {
       frontMatter,
     };
   });
-  console.log("[docs]", docs);
+  // console.log("[docs]", docs);
   return docs;
 }
