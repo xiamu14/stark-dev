@@ -16,7 +16,10 @@ const app = express();
 const edge = Edge.create();
 // 设置 Edge 模板引擎
 edge.mount(new URL("./views", import.meta.url));
-app.use(express.static("public"));
+
+console.log("[path]", path.join(__dirname, "../public"));
+app.use(express.static(path.join(__dirname, "../public")));
+
 app.get("/subscribe", (req, res) => {
   // store `res` of client to let us send events at will
   let response = res;
@@ -56,6 +59,10 @@ app.get("/draft/*", async (req, res) => {
   const file = files.find((item) =>
     new RegExp(fileName, "i").test(item.fileName)
   );
+
+  if (!file) {
+    res.send("404");
+  }
 
   const content = await convertHtml(file.content);
   const routes = files.map((item) => ({
