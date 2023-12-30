@@ -7,6 +7,10 @@
   "bin": {
     "stark-dev": "./src/app.js"
   },
+  "files": [
+    "src",
+    "public"
+  ],
   "scripts": {
     "uno:dev": "npx unocss \"src/views/**/*.edge\" -o ./public/styles/uno.min.css --watch",
     "dev": "concurrently \"npm run uno:dev\" \"nodemon src/app.js 3000\""
