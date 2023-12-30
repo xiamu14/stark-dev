@@ -9,7 +9,6 @@ import {
   transformerVariantGroup,
   presetWebFonts,
 } from "unocss";
-
 export default defineConfig({
   shortcuts: [
     // ...

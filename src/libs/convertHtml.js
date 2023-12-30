@@ -11,8 +11,12 @@ export default async function convertHtml(markdown) {
     .use(remarkRehype)
     .use(rehypePrettyCode, {
       theme: JSON.parse(
+        // fs.readFileSync(
+        //   new URL("../themes/moonlight-ii.json", import.meta.url),
+        //   "utf-8"
+        // ),
         fs.readFileSync(
-          new URL("../themes/moonlight-ii.json", import.meta.url),
+          new URL("../themes/vitesse-light.json", import.meta.url),
           "utf-8"
         )
       ),

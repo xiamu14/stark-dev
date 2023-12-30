@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "uno:dev": "npx unocss \"src/views/*.edge\" -o ./public/styles/uno.min.css --watch",
+    "uno:dev": "npx unocss \"src/views/**/*.edge\" -o ./public/styles/uno.min.css --watch",
     "dev": "concurrently \"npm run uno:dev\" \"nodemon src/app.js 3000\""
   },
   "keywords": [],
@@ -13,8 +13,11 @@
   "license": "ISC",
   "dependencies": {
     "@unocss/cli": "^0.58.0",
+    "daisyui": "^4.4.24",
     "edge.js": "^6.0.0",
     "express": "^4.18.2",
+    "install": "^0.13.0",
+    "node-watch": "^0.7.4",
     "rehype-pretty-code": "^0.12.3",
     "rehype-prism-plus": "^1.6.3",
     "rehype-sanitize": "^6.0.0",
@@ -28,6 +31,8 @@
     "node": "18.19.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.2",
+    "unocss-preset-daisy": "^7.0.0"
   }
 }

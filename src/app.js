@@ -5,6 +5,7 @@ import path, { join } from "path";
 import { Edge } from "edge.js";
 import express from "express";
 import { fileURLToPath } from "url";
+import watch from "node-watch";
 import convertHtml from "./libs/convertHtml.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -16,8 +17,30 @@ const edge = Edge.create();
 // 设置 Edge 模板引擎
 edge.mount(new URL("./views", import.meta.url));
 app.use(express.static("public"));
+app.get("/subscribe", (req, res) => {
+  // store `res` of client to let us send events at will
+  let response = res;
+
+  const headers = {
+    "Content-Type": "text/event-stream",
+    Connection: "keep-alive",
+    "Cache-Control": "no-cache",
+  };
+  res.writeHead(200, headers);
+
+  // send client a simple response
+  res.write("you are subscribed\n\n");
+  watch(path.join(__dirname, "./drafts"), () => {
+    console.log("[update]");
+    response.write("data: refresh\n\n");
+  });
+  // listen for client 'close' requests
+  req.on("close", () => {
+    response = res;
+  });
+});
 // 设置路由来处理博客文章的展示
-app.get("*", async (req, res) => {
+app.get("/doc/*", async (req, res) => {
   // 使用 contentlayer 读取指定 id 的博客文章数据
   // const blogPost = contentlayer.getBlogPostById(req.params.id);
   console.log(
@@ -25,9 +48,15 @@ app.get("*", async (req, res) => {
     "color:white;background: #18a0f1;padding:4px",
     req.params["0"].slice(0)
   );
-  const markdown = fs.readFileSync(path.join(__dirname, "drafts", "hello.md"), {
-    encoding: "utf-8",
-  });
+  const pathname = req.params["0"].slice(0);
+  const fileName = pathname.replace("/", "");
+  console.log("[fileName]", fileName);
+  const markdown = fs.readFileSync(
+    path.join(__dirname, "drafts", `${fileName ? fileName : "hello"}.md`),
+    {
+      encoding: "utf-8",
+    }
+  );
   const content = await convertHtml(markdown);
 
   const html = await edge.render("main", {
