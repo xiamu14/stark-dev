@@ -7,7 +7,7 @@ import express from "express";
 import { fileURLToPath } from "url";
 import watch from "node-watch";
 import convertHtml from "./libs/convertHtml.js";
-
+import { getDocs } from "./libs/getDocs.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // 创建 Express 应用
@@ -40,7 +40,7 @@ app.get("/subscribe", (req, res) => {
   });
 });
 // 设置路由来处理博客文章的展示
-app.get("/doc/*", async (req, res) => {
+app.get("/draft/*", async (req, res) => {
   // 使用 contentlayer 读取指定 id 的博客文章数据
   // const blogPost = contentlayer.getBlogPostById(req.params.id);
   console.log(
@@ -51,16 +51,20 @@ app.get("/doc/*", async (req, res) => {
   const pathname = req.params["0"].slice(0);
   const fileName = pathname.replace("/", "");
   console.log("[fileName]", fileName);
-  const markdown = fs.readFileSync(
-    path.join(__dirname, "drafts", `${fileName ? fileName : "hello"}.md`),
-    {
-      encoding: "utf-8",
-    }
-  );
-  const content = await convertHtml(markdown);
+  const files = await getDocs();
 
+  const file = files.find((item) => new RegExp(fileName).test(item.fileName));
+
+  const content = await convertHtml(file.content);
+  const routes = files.map((item) => ({
+    name: item?.frontMatter?.title ?? item.fileName,
+    path: item.fileName,
+    isActive: new RegExp(fileName).test(item.fileName),
+  }));
+  console.log("[routes]", routes);
   const html = await edge.render("main", {
     content,
+    routes,
   });
 
   res.setHeader("content-type", "text/html");

@@ -3,16 +3,17 @@
 <html>
 
 <head>
-   <title>Stark Dev</title>
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@radix-ui/colors@latest/gray.css" />
+   <title>Stark Dev - 超简单生成技术文档</title>
    <link rel="stylesheet" href="/styles/stark-dev.css" />
    <link rel="stylesheet" href="/styles/highlight.css" />
    <link rel="stylesheet" href="/styles/uno.min.css" />
+   <link rel="icon" href="/images/favicon.svg" sizes="any" type="image/svg+xml">
 </head>
 
 <body class="light lignt-theme p-0 m-0">
    <div class="app my-0 mx-auto overflow-x-hidden relative min-h-100vh">
       @!component('components/header')
+      @!component('components/sidebar', {routes:routes})
       @!component('components/content', {content:content})
    </div>
    <script>

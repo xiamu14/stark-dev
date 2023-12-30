@@ -1,6 +1,7 @@
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
+import remarkFrontmatter from "remark-frontmatter";
 import remarkRehype from "remark-rehype";
 import rehypePrettyCode from "rehype-pretty-code";
 import { unified } from "unified";
@@ -22,6 +23,7 @@ export default async function convertHtml(markdown) {
       ),
     })
     .use(rehypeStringify)
+    .use(remarkFrontmatter)
     .process(markdown);
   return String(file);
 }

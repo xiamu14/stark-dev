@@ -1,12 +1,13 @@
 :root {
   --content-width: 78vw;
-  --content-max-width: 1350px;
+  --content-max-width: 1300px;
   --content-min-width: 1000px;
-  --sidebar-width: 210px;
-  --header-height: 48px;
+  --sidebar-width: 280px;
+  --header-height: 52px;
 }
 
-.app {
+.app,
+.header > nav > div {
   width: var(--content-width);
   max-width: var(--content-max-width);
   min-width: var(--content-min-width);

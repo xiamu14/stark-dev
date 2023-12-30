@@ -1,0 +1,14 @@
+<div
+    class="box-border pr-40px py-20px fixed mt-14px bg-white w-[var(--sidebar-width)] top-[var(--header-height)] left-[var(--content-padding-x)]">
+    @each(route in routes)
+    <div class="flex flex-col mb-6px last:mb-0">
+        @if(route.isActive)
+        <a class="no-underline text-16px px-20px py-10px  rounded-full cursor-pointer bg-blue-50 text-blue-500"
+            href="/draft/{{route.path}}">{{route.name}}</a>
+        @else
+        <a class="text-dark-100 no-underline text-16px px-20px py-10px text-cool-gray-700 rounded-full cursor-pointer hover:bg-blue-50 hover:text-blue-500 "
+            href="/draft/{{route.path}}">{{route.name}}</a>
+        @end
+    </div>
+    @end
+</div>
