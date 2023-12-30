@@ -34,7 +34,7 @@ app.get("/subscribe", (req, res) => {
   // send client a simple response
   res.write("you are subscribed\n\n");
   watch(
-    path.join(__dirname, "../"),
+    process.cwd(),
     {
       recursive: true,
       filter(f, skip) {
@@ -96,10 +96,12 @@ app.get("/draft/*", async (req, res) => {
 
 // 启动 Express 服务器
 const server = createServer(app);
-server.listen(3000, () => {
-  console.log(
-    "Server is running on port 3000: localhost:3000" +
-      "\n" +
-      "http://127.0.0.1:3000"
-  );
-});
+try {
+  server.listen(3000, () => {
+    console.log(
+      "Server is running on port 3000: localhost:3000" +
+        "\n" +
+        "http://127.0.0.1:3000"
+    );
+  });
+} catch (error) {}
