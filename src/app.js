@@ -53,13 +53,15 @@ app.get("/draft/*", async (req, res) => {
   console.log("[fileName]", fileName);
   const files = await getDocs();
 
-  const file = files.find((item) => new RegExp(fileName).test(item.fileName));
+  const file = files.find((item) =>
+    new RegExp(fileName, "i").test(item.fileName)
+  );
 
   const content = await convertHtml(file.content);
   const routes = files.map((item) => ({
     name: item?.frontMatter?.title ?? item.fileName,
     path: item.fileName,
-    isActive: new RegExp(fileName).test(item.fileName),
+    isActive: new RegExp(fileName, "i").test(item.fileName),
   }));
   console.log("[routes]", routes);
   const html = await edge.render("main", {
