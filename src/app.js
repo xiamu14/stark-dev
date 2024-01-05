@@ -56,15 +56,28 @@ app.get("/subscribe", (req, res) => {
     response = res;
   });
 });
+app.get("/api/draft/*", async (req, res) => {
+  const fileName = req.params["0"].slice(0);
+
+  const files = await getDocs();
+
+  const file = files.find((item) =>
+    new RegExp(fileName, "i").test(item.fileName)
+  );
+  res.setHeader("content-type", "application/json");
+
+  if (!file) {
+    res.send({ content: "" });
+  } else {
+    const content = await convertHtml(file.content);
+    res.send({ content });
+  }
+});
 // 设置路由来处理博客文章的展示
 app.get("/draft/*", async (req, res) => {
   // 使用 contentlayer 读取指定 id 的博客文章数据
   // const blogPost = contentlayer.getBlogPostById(req.params.id);
-  console.log(
-    "%c req",
-    "color:white;background: #18a0f1;padding:4px",
-    req.params["0"].slice(0)
-  );
+
   const pathname = req.params["0"].slice(0);
   const fileName = pathname.replace("/", "");
   console.log("[fileName]", fileName);
@@ -84,7 +97,6 @@ app.get("/draft/*", async (req, res) => {
     path: item.fileName,
     isActive: new RegExp(fileName, "i").test(item.fileName),
   }));
-  console.log("[routes]", routes);
   const html = await edge.render("main", {
     content,
     routes,

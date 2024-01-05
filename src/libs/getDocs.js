@@ -3,7 +3,6 @@ import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
 import yaml from "js-yaml";
-
 export async function getDocs() {
   const files = await glob("**/*.md", { ignore: "node_modules/**" });
 
