@@ -3,6 +3,7 @@ import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
 import yaml from "js-yaml";
+import { md5 } from "js-md5";
 export async function getDocs() {
   const files = await glob("**/*.md", { ignore: "node_modules/**" });
 
@@ -21,12 +22,12 @@ export async function getDocs() {
     }
 
     return {
+      route: md5(filePath),
       filePath,
       fileName: path.basename(filePath),
       content,
       frontMatter,
     };
   });
-  // console.log("[docs]", docs);
   return docs;
 }

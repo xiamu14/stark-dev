@@ -17,7 +17,6 @@ const edge = Edge.create();
 // 设置 Edge 模板引擎
 edge.mount(new URL("./views", import.meta.url));
 
-console.log("[path]", path.join(__dirname, "../public"));
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.get("/subscribe", (req, res) => {
@@ -47,7 +46,6 @@ app.get("/subscribe", (req, res) => {
       },
     },
     () => {
-      console.log("[update]");
       response.write("data: refresh\n\n");
     }
   );
@@ -57,13 +55,11 @@ app.get("/subscribe", (req, res) => {
   });
 });
 app.get("/api/draft/*", async (req, res) => {
-  const fileName = req.params["0"].slice(0);
+  const route = req.params["0"].slice(0);
 
   const files = await getDocs();
 
-  const file = files.find((item) =>
-    new RegExp(fileName, "i").test(item.fileName)
-  );
+  const file = files.find((item) => route === item.route);
   res.setHeader("content-type", "application/json");
 
   if (!file) {
@@ -73,37 +69,37 @@ app.get("/api/draft/*", async (req, res) => {
     res.send({ content });
   }
 });
+app.get("/", async (req, res) => {
+  const files = await getDocs();
+  res.redirect(`/draft/${files[0].route}`);
+});
 // 设置路由来处理博客文章的展示
 app.get("/draft/*", async (req, res) => {
   // 使用 contentlayer 读取指定 id 的博客文章数据
   // const blogPost = contentlayer.getBlogPostById(req.params.id);
 
   const pathname = req.params["0"].slice(0);
-  const fileName = pathname.replace("/", "");
-  console.log("[fileName]", fileName);
+  const route = pathname.replace("/", "");
   const files = await getDocs();
 
-  const file = files.find((item) =>
-    new RegExp(fileName, "i").test(item.fileName)
-  );
+  const file = files.find((item) => route === item.route);
 
   if (!file) {
     res.send("404");
+  } else {
+    const content = await convertHtml(file.content);
+    const routes = files.map((item) => ({
+      name: item?.frontMatter?.title ?? item.fileName,
+      path: item.route,
+    }));
+    const html = await edge.render("main", {
+      content,
+      routes,
+    });
+
+    res.setHeader("content-type", "text/html");
+    res.send(html);
   }
-
-  const content = await convertHtml(file.content);
-  const routes = files.map((item) => ({
-    name: item?.frontMatter?.title ?? item.fileName,
-    path: item.fileName,
-    isActive: new RegExp(fileName, "i").test(item.fileName),
-  }));
-  const html = await edge.render("main", {
-    content,
-    routes,
-  });
-
-  res.setHeader("content-type", "text/html");
-  res.send(html);
 });
 
 // 启动 Express 服务器
