@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   routes.forEach((route) => {
     route.addEventListener("click", async () => {
       const path = route.dataset.path;
+      console.log("xxxx");
       history.pushState({ path }, "", path);
       window.dispatchEvent(historyEvent);
       const content = await getContent(path);
@@ -44,6 +45,8 @@ async function getContent(path) {
 function initRouteStyle() {
   const pathname = window.location.pathname;
   const activeRoute = document.querySelector(`[data-path="${pathname}"]`);
-  activeRoute.classList.add("route-active");
-  activeRoute.classList.remove("route-default");
+  if (activeRoute) {
+    activeRoute.classList.add("route-active");
+    activeRoute.classList.remove("route-default");
+  }
 }

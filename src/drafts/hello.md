@@ -1,72 +1,23 @@
----
-title: Stark Dev 简介
-desc: xxx
-author: Ben
-date: 2023-12-30
----
+# GFM
 
-# 标题 1
+## Autolink literals
 
-这里要写什么，其实没什么
+www.example.com, https://example.com, and contact@example.com.
 
-## 标题 2
+## Footnote
 
-关于安卓开发很重要的事情
+> use other content
 
-### 标题 3
+## Strikethrough
 
-是的了，很重要的啊，注意看
+~one~ or ~~two~~ tildes.
 
-#### 标题 4
+## Table
 
-## 标题 2
+| a   | b   |   c |  d  |
+| --- | :-- | --: | :-: |
 
-**这是加粗的文本** _斜体_
+## Tasklist
 
----
-
-### 标题 3
-
-你好! `ni stark-dev`
-
-```ts
-// comment
-console.log("hello world!11");
-```
-
-> 引用点什么文字好了
-
-- 这就是了 1
-- 第二点
-- 第三点
-
-## 标题 2
-
-关于安卓开发很重要的事情
-
-### 标题 3
-
-是的了，很重要的啊，注意看
-
-#### 标题 4
-
-## 标题 2
-
-**这是加粗的文本** _斜体_
-
----
-
-### 标题 3
-
-你好! `ni stark-dev`
-
-```ts
-// comment
-console.log("hello world!11");
-```
-
-> 引用点什么文字好了
-
-- 这就是了 1
-- 第二点
-- 第三点
+- [ ] to do
+- [x] done

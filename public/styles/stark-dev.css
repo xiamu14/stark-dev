@@ -53,6 +53,10 @@
     }
   }
 
+  a {
+    color: #4195f5f2;
+  }
+
   ul {
     list-style-type: circle;
     display: flex;
@@ -61,6 +65,58 @@
     font-size: 15px;
     margin-inline-start: 0;
     padding-inline-start: 14px;
+  }
+
+  ul.contains-task-list {
+    list-style-type: none;
+    padding-inline-start: 0px;
+  }
+
+  input[type="checkbox"] {
+    position: relative;
+    cursor: pointer;
+    margin: 2px;
+  }
+
+  input[type="checkbox"]:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+    top: 50%;
+    left: 50%;
+    border-radius: 2px;
+    background-color: rgb(255, 255, 255);
+    outline: 1px rgba(81, 81, 81, 0.2) solid;
+    transform: translate(-50%, -50%);
+  }
+
+  input[type="checkbox"]:checked::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    background-color: #4195f5f2;
+    outline: 1px rgba(255, 255, 255, 0.2) solid;
+    transform: translate(-50%, -50%);
+  }
+  input[type="checkbox"]:checked:after {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 9px;
+    border: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+    position: absolute;
+    top: 36%;
+    left: 52%;
+    transform: translate(-50%, -50%) rotate(45deg);
   }
 
   blockquote {
