@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   routes.forEach((route) => {
     route.addEventListener("click", async () => {
       const path = route.dataset.path;
-      console.log("xxxx");
       history.pushState({ path }, "", path);
       window.dispatchEvent(historyEvent);
       const content = await getContent(path);
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("historyChange", () => {
     const pathname = window.location.pathname;
-    console.log("pathname", pathname);
     routes.forEach((route) => {
       route.classList.remove("route-active");
       route.classList.add("route-default");

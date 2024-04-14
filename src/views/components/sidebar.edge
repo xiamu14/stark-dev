@@ -1,9 +1,9 @@
 <div
     class="box-border pr-40px py-20px fixed mt-14px bg-white w-[var(--sidebar-width)] top-[var(--header-height)] left-[var(--content-padding-x)]">
     @each(route in routes)
-    <div class="flex flex-col mb-6px last:mb-0">
-        <a class="route route-default no-underline text-16px px-20px py-10px  rounded-full cursor-pointer truncate"
-            data-path="/draft/{{route.path}}">{{route.name}}</a>
+    <div class="flex flex-col mb-6px last:mb-0 overflow-hidden">
+        <div class="w-[80%] route route-default text-16px px-20px py-10px flex items-center cursor-pointer"
+            data-path="/draft/{{route.path}}"><p class="truncate">{{route.name}}</p></div>
     </div>
     @end
 </div>

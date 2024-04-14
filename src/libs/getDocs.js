@@ -1,7 +1,7 @@
 import { glob } from "glob";
 import path from "path";
 import fs from "fs";
-import { fileURLToPath } from "url";
+// import { fileURLToPath } from "url";
 import yaml from "js-yaml";
 import { md5 } from "js-md5";
 export async function getDocs() {
@@ -18,7 +18,7 @@ export async function getDocs() {
     let frontMatter;
     if (frontMeta) {
       frontMatter = yaml.load(frontMeta[1]);
-      console.log(frontMatter);
+      // console.log(frontMatter);
     }
 
     return {

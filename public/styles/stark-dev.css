@@ -1,149 +1,162 @@
 :root {
-  --content-width: 78vw;
-  --content-max-width: 1300px;
-  --content-min-width: 1000px;
-  --sidebar-width: 280px;
-  --header-height: 52px;
+    --content-width: 78vw;
+    --content-max-width: 1300px;
+    --content-min-width: 1000px;
+    --sidebar-width: 280px;
+    --header-height: 52px;
 }
 
 .app,
 .header > nav > div {
-  width: var(--content-width);
-  max-width: var(--content-max-width);
-  min-width: var(--content-min-width);
+    width: var(--content-width);
+    max-width: var(--content-max-width);
+    min-width: var(--content-min-width);
 }
 
 .header nav {
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.32);
-  backdrop-filter: saturate(180%) blur(10px);
-  box-shadow: rgba(2, 1, 1, 0.1) 0px 5px 20px -5px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.32);
+    backdrop-filter: saturate(180%) blur(10px);
+    box-shadow: rgba(2, 1, 1, 0.1) 0px 5px 20px -5px;
 }
 
 .stark-content {
-  color: #323232;
-  padding-top: 20px;
-  h1 {
-    font-size: 27px;
-  }
-  h2 {
-    font-size: 23px;
-  }
-  h3 {
-    font-size: 20px;
-  }
-  h4 {
-    font-size: 17px;
-  }
-  p {
-    font-size: 16px;
-    color: #373737;
-    code {
-      line-height: 1.25;
-      padding: 4px 0.5em 4px;
-      background-color: #008ff519;
-      color: #4195f5f2;
-      border-radius: 4px;
+    color: #323232;
+    padding-top: 20px;
+    h1 {
+        font-size: 27px;
     }
-  }
-
-  a {
-    color: #4195f5f2;
-  }
-
-  ul {
-    list-style-type: circle;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    font-size: 15px;
-    margin-inline-start: 0;
-    padding-inline-start: 14px;
-  }
-
-  ul.contains-task-list {
-    list-style-type: none;
-    padding-inline-start: 0px;
-  }
-
-  input[type="checkbox"] {
-    position: relative;
-    cursor: pointer;
-    margin: 2px;
-  }
-
-  input[type="checkbox"]:before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    box-sizing: border-box;
-    top: 50%;
-    left: 50%;
-    border-radius: 2px;
-    background-color: rgb(255, 255, 255);
-    outline: 1px rgba(81, 81, 81, 0.2) solid;
-    transform: translate(-50%, -50%);
-  }
-
-  input[type="checkbox"]:checked::before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    top: 50%;
-    left: 50%;
-    background-color: #4195f5f2;
-    outline: 1px rgba(255, 255, 255, 0.2) solid;
-    transform: translate(-50%, -50%);
-  }
-  input[type="checkbox"]:checked:after {
-    content: "";
-    display: block;
-    width: 5px;
-    height: 9px;
-    border: solid;
-    border-width: 0 1px 1px 0;
-    border-color: white;
-    position: absolute;
-    top: 36%;
-    left: 52%;
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-
-  blockquote {
-    border-left: 2px solid #4195f5f2;
-    margin-inline-start: 0;
-    padding-left: 12px;
+    h2 {
+        font-size: 23px;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    h4 {
+        font-size: 17px;
+    }
     p {
-      color: #646464;
+        font-size: 16px;
+        color: #373737;
+        code {
+            line-height: 1.25;
+            padding: 4px 0.5em 4px;
+            background-color: #008ff519;
+            color: #4195f5f2;
+            border-radius: 4px;
+        }
     }
-  }
-  hr {
-    width: 100%;
-    height: 1px;
-    background-color: #b6c2e6;
-    border: none;
-  }
+
+    a {
+        color: #4195f5f2;
+    }
+
+    ul {
+        list-style-type: circle;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-size: 15px;
+        margin-inline-start: 0;
+        padding-inline-start: 14px;
+    }
+
+    ul.contains-task-list {
+        list-style-type: none;
+        padding-inline-start: 0px;
+    }
+
+    input[type="checkbox"] {
+        position: relative;
+        cursor: pointer;
+        margin: 2px;
+    }
+
+    input[type="checkbox"]:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        box-sizing: border-box;
+        top: 50%;
+        left: 50%;
+        border-radius: 2px;
+        background-color: rgb(255, 255, 255);
+        outline: 1px rgba(81, 81, 81, 0.2) solid;
+        transform: translate(-50%, -50%);
+    }
+
+    input[type="checkbox"]:checked::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        background-color: #4195f5f2;
+        outline: 1px rgba(255, 255, 255, 0.2) solid;
+        transform: translate(-50%, -50%);
+    }
+    input[type="checkbox"]:checked:after {
+        content: "";
+        display: block;
+        width: 5px;
+        height: 9px;
+        border: solid;
+        border-width: 0 1px 1px 0;
+        border-color: white;
+        position: absolute;
+        top: 36%;
+        left: 52%;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    blockquote {
+        border-left: 2px solid #4195f5f2;
+        margin-inline-start: 0;
+        padding-left: 12px;
+        p {
+            color: #646464;
+        }
+    }
+    hr {
+        width: 100%;
+        height: 1px;
+        background-color: #b6c2e6;
+        border: none;
+    }
 }
 .route-default {
-  color: rgb(60 60 60);
+    color: rgb(60 60 60);
+}
+
+.route p {
+    margin: 0;
 }
 
 .route-default:hover {
-  color: rgb(59 130 246);
-  background-color: rgb(239 246 255);
+    color: rgb(59 130 246);
 }
 
 .route-active {
-  color: rgb(59 130 246);
-  background-color: rgb(239 246 255);
+    color: rgb(59 130 246);
+}
+.route-active::before {
+    content: "";
+    transform: translateX(-10px);
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    border-radius: 4px;
+    background-color: rgb(59 130 246);
+    flex-shrink: 0;
+    position: absolute;
 }

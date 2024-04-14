@@ -1,4 +1,3 @@
-import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import remarkFrontmatter from "remark-frontmatter";
@@ -13,12 +12,7 @@ export default async function convertHtml(markdown) {
     .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypePrettyCode, {
-      theme: JSON.parse(
-        fs.readFileSync(
-          new URL("../themes/vitesse-light.json", import.meta.url),
-          "utf-8"
-        )
-      ),
+      theme: JSON.parse(fs.readFileSync(new URL("../themes/vitesse-light.json", import.meta.url), "utf-8")),
     })
     .use(rehypeStringify)
     .use(remarkFrontmatter)

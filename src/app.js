@@ -1,7 +1,7 @@
 // 导入所需的模块
 import { createServer } from "http";
-import fs, { readFileSync } from "fs";
-import path, { join } from "path";
+
+import path from "path";
 import { Edge } from "edge.js";
 import express from "express";
 import { fileURLToPath } from "url";
@@ -47,7 +47,7 @@ app.get("/subscribe", (req, res) => {
     },
     () => {
       response.write("data: refresh\n\n");
-    }
+    },
   );
   // listen for client 'close' requests
   req.on("close", () => {
@@ -69,7 +69,7 @@ app.get("/api/draft/*", async (req, res) => {
     res.send({ content });
   }
 });
-app.get("/", async (req, res) => {
+app.get("/", async (_, res) => {
   const files = await getDocs();
   res.redirect(`/draft/${files[0].route}`);
 });
@@ -106,10 +106,6 @@ app.get("/draft/*", async (req, res) => {
 const server = createServer(app);
 try {
   server.listen(3000, () => {
-    console.log(
-      "Server is running on port 3000: localhost:3000" +
-        "\n" +
-        "http://127.0.0.1:3000"
-    );
+    console.log("Server is running on port 3000: localhost:3000" + "\n" + "http://127.0.0.1:3000");
   });
 } catch (error) {}
