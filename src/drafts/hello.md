@@ -1,5 +1,5 @@
 ---
-title: 测试1
+title: Markdown
 ---
 
 # GFM
@@ -16,10 +16,11 @@ www.example.com, https://example.com, and contact@example.com.
 
 ~one~ or ~~two~~ tildes.
 
-## Table
+## Code
 
-| a   | b   |   c |  d  |
-| --- | :-- | --: | :-: |
+```ts
+console.log("这是干什么啊，真的是很为难的啊");
+```
 
 ## Tasklist
 

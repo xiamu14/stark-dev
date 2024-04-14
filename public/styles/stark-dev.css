@@ -8,7 +8,7 @@
 }
 
 html {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 body {
@@ -144,9 +144,6 @@ body {
         margin-inline-end: 0;
         border-radius: 4px;
         padding-left: 12px;
-        p {
-            color: #606060;
-        }
     }
     hr {
         width: 100%;
