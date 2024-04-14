@@ -25,3 +25,5 @@ www.example.com, https://example.com, and contact@example.com.
 
 - [ ] to do
 - [x] done
+
+![](https://markdown.com.cn/assets/img/philly-magic-garden.9c0b4415.jpg)

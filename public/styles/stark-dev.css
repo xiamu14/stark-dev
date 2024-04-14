@@ -3,7 +3,12 @@
     --content-max-width: 1300px;
     --content-min-width: 1000px;
     --sidebar-width: 280px;
+    --half-sidebar-width: 140px;
     --header-height: 52px;
+}
+
+body {
+    overflow: hidden;
 }
 
 .app,
@@ -29,6 +34,8 @@
 .stark-content {
     color: #323232;
     padding-top: 20px;
+    overflow-y: scroll;
+    height: calc(100vh - 60px);
     h1 {
         font-size: 27px;
     }
@@ -51,6 +58,11 @@
             color: #4195f5f2;
             border-radius: 4px;
         }
+    }
+
+    p img {
+        width: 100%;
+        border-radius: 4px;
     }
 
     a {
@@ -120,11 +132,16 @@
     }
 
     blockquote {
-        border-left: 2px solid #4195f5f2;
         margin-inline-start: 0;
         padding-left: 12px;
+        background: #add4ff96;
+        border: 1px solid #4195f5f2;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        border-radius: 4px;
+        padding-left: 12px;
         p {
-            color: #646464;
+            color: #606060;
         }
     }
     hr {
@@ -134,6 +151,11 @@
         border: none;
     }
 }
+
+.stark-content::-webkit-scrollbar {
+    width: 0px; /* Width of the scrollbar */
+}
+
 .route-default {
     color: rgb(60 60 60);
 }

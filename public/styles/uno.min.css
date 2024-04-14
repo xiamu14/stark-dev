@@ -40,12 +40,13 @@
 .border-b-solid{border-bottom-style:solid;}
 .bg-white{--un-bg-opacity:1;background-color:rgb(255 255 255 / var(--un-bg-opacity));}
 .p-0{padding:0;}
-.px-\[var\(--sidebar-width\)\]{padding-left:var(--sidebar-width);padding-right:var(--sidebar-width);}
 .px-20px{padding-left:20px;padding-right:20px;}
 .px-80px{padding-left:80px;padding-right:80px;}
 .py-10px{padding-top:10px;padding-bottom:10px;}
 .py-20px{padding-top:20px;padding-bottom:20px;}
+.pe-\[var\(--half-sidebar-width\)\]{padding-inline-end:var(--half-sidebar-width);}
 .pr-40px{padding-right:40px;}
+.ps-\[var\(--sidebar-width\)\]{padding-inline-start:var(--sidebar-width);}
 .text-16px{font-size:16px;}
 .text-gray-600{--un-text-opacity:1;color:rgb(75 85 99 / var(--un-text-opacity));}
 .no-underline{text-decoration:none;}
