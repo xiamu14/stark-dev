@@ -7,18 +7,18 @@
   "bin": {
     "stark-dev": "./src/app.js"
   },
-  "files": [
-    "src",
-    "public"
-  ],
+  "files": ["src", "public"],
   "scripts": {
     "uno:dev": "npx unocss \"src/views/**/*.edge\" -o ./public/styles/uno.min.css --watch",
-    "dev": "concurrently \"npm run uno:dev\" \"nodemon src/app.js 3000\""
+    "uno": "npx unocss \"src/views/**/*.edge\" -o ./public/styles/uno.min.css",
+    "dev": "concurrently \"npm run uno:dev\" \"nodemon src/app.js 3000\"",
+    "start": "concurrently \"npm run uno\" \"node src/app.js 3000\""
   },
   "keywords": [],
   "author": "ben",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "5.12.1",
     "@unocss/cli": "^0.58.0",
     "daisyui": "^4.4.24",
     "edge.js": "^6.0.0",
@@ -29,6 +29,7 @@
     "js-md5": "^0.8.3",
     "js-yaml": "^4.1.0",
     "node-watch": "^0.7.4",
+    "prisma": "^5.12.1",
     "rehype-pretty-code": "^0.12.3",
     "rehype-prism-plus": "^1.6.3",
     "rehype-sanitize": "^6.0.0",
@@ -46,10 +47,13 @@
     "node": "18.19.0"
   },
   "devDependencies": {
+    "@types/node": "^20.12.7",
     "concurrently": "^8.2.2",
     "nodemon": "^3.0.2",
     "rehype-shikiji": "^0.10.2",
     "renew-it": "^1.5.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5",
     "unocss-preset-daisy": "^7.0.0"
   }
 }

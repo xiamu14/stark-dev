@@ -1,7 +1,6 @@
 import { glob } from "glob";
 import path from "path";
 import fs from "fs";
-// import { fileURLToPath } from "url";
 import yaml from "js-yaml";
 import { md5 } from "js-md5";
 export async function getDocs() {

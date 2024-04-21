@@ -8,8 +8,11 @@ import { fileURLToPath } from "url";
 import watch from "node-watch";
 import convertHtml from "./libs/convertHtml.js";
 import { getDocs } from "./libs/getDocs.js";
+import { prisma } from "./prisma.js";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 // 创建 Express 应用
 const app = express();
 
@@ -100,6 +103,24 @@ app.get("/draft/*", async (req, res) => {
     res.setHeader("content-type", "text/html");
     res.send(html);
   }
+});
+
+app.post("/api/deploy", async (_, res) => {
+  // TODO：读取项目配置项文件
+  const name = "start dev";
+  let project = await prisma.project.findUnique({ where: { name } });
+  if (!project) {
+    project = await prisma.project.create({
+      data: {
+        name,
+      },
+    });
+  }
+  // TODO: 读取并筛选出未更新的内容
+  const files = await getDocs();
+  const papers = files.map((file) => {});
+
+  res.json(project);
 });
 
 // 启动 Express 服务器

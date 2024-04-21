@@ -5,7 +5,6 @@ import remarkRehype from "remark-rehype";
 import rehypeShikiji from "rehype-shikiji";
 import remarkGfm from "remark-gfm";
 import { unified } from "unified";
-import { codeEnhance } from "./codeEnhance.js";
 
 export default async function convertHtml(markdown) {
   const file = await unified()
