@@ -14,8 +14,7 @@
   "scripts": {
     "uno:dev": "npx unocss \"src/views/**/*.edge\" -o ./public/styles/uno.min.css --watch",
     "uno": "npx unocss \"src/views/**/*.edge\" -o ./public/styles/uno.min.css",
-    "dev": "concurrently \"npm run uno:dev\" \"nodemon src/app.js 3000\"",
-    "start": "concurrently \"npm run uno\" \"node src/app.js 3000\""
+    "dev": "concurrently \"npm run uno:dev\" \"nodemon src/app.js 3000\""
   },
   "keywords": [],
   "author": "ben",
